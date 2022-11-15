@@ -4,20 +4,63 @@ clusters:
     certificate-authority: ca.crt
     extensions:
     - extension:
-        last-update: Thu, 01 Sep 2022 10:23:54 CEST
+        last-update: Thu, 10 Nov 2022 09:43:43 CET
         provider: minikube.sigs.k8s.io
-        version: v1.26.1
+        version: v1.28.0
+      name: cluster_info
+    server: https://192.168.58.2:8443
+  name: ejercicios
+- cluster:
+    certificate-authority: ca.crt
+    extensions:
+    - extension:
+        last-update: Mon, 14 Nov 2022 09:18:53 CET
+        provider: minikube.sigs.k8s.io
+        version: v1.28.0
+      name: cluster_info
+    server: https://192.168.67.2:8443
+  name: javaprofile
+- cluster:
+    certificate-authority: ca.crt
+    extensions:
+    - extension:
+        last-update: Tue, 15 Nov 2022 08:30:19 CET
+        provider: minikube.sigs.k8s.io
+        version: v1.28.0
       name: cluster_info
     server: https://192.168.49.2:8443
   name: minikube
 contexts:
 - context:
+    cluster: ejercicios
+    extensions:
+    - extension:
+        last-update: Thu, 10 Nov 2022 09:43:43 CET
+        provider: minikube.sigs.k8s.io
+        version: v1.28.0
+      name: context_info
+    namespace: default
+    user: ejercicios
+  name: ejercicios
+- context:
+    cluster: javaprofile
+    extensions:
+    - extension:
+        last-update: Mon, 14 Nov 2022 09:18:53 CET
+        provider: minikube.sigs.k8s.io
+        version: v1.28.0
+      name: context_info
+    namespace: default
+    user: javaprofile
+  name: javaprofile
+- context:
     cluster: minikube
     extensions:
     - extension:
-        last-update: Thu, 01 Sep 2022 10:23:54 CEST
+        last-update: Tue, 15 Nov 2022 08:30:19 CET
         provider: minikube.sigs.k8s.io
-        version: v1.26.1
+        version: v1.28.01
+      name: context
       name: context_info
     namespace: default
     user: minikube
@@ -26,6 +69,14 @@ current-context: minikube
 kind: Config
 preferences: {}
 users:
+- name: ejercicios
+  user:
+    client-certificate: minikube/client.crt
+    client-key: minikube/client.key
+- name: javaprofile
+  user:
+    client-certificate: minikube/client.crt
+    client-key: minikube/client.key
 - name: minikube
   user:
     client-certificate: minikube/client.crt
